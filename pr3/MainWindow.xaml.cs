@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Threading;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,19 @@ namespace pr3
     {   
         
         public Classes.PersonInfo Player = new Classes.PersonInfo("Student",100,10,1,0,0,5);
+        public List<Classes.PersonInfo> Empty = new List<Classes.PersonInfo>();
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
             UserInfoPlayer();
+            Empty.Add(new Classes.PersonInfo("Враг 1", 100, 20, 1, 15, 5, 20));
+            Empty.Add(new Classes.PersonInfo("Враг 2", 20, 5, 1, 5, 2, 5));
+            Empty.Add(new Classes.PersonInfo("Враг 3", 50, 3, 1, 10, 10, 15));
+
+            dispatcherTimer.Tick += AttackPlayer;
+            dispatcherTimer.Interval = new System.TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
         }
 
         public void UserInfoPlayer()
@@ -43,6 +53,16 @@ namespace pr3
             playerLevel.Content = "Уровень: " + Player.Level;
             playerGlasses.Content = "Опыт: " + Player.Glasses;
             playerMoney.Content = "Монеты: " + Player.Money;
+        }
+
+        private void AttackPlayer(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void AttackEmpty(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
