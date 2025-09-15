@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr3.Classes
 {
-    internal class PersonInfo
+    public class PersonInfo
     {
         /// Наименование
         public string Name { get; set; }

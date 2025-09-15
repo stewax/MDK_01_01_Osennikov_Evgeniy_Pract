@@ -19,10 +19,30 @@ namespace pr3
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {   
+        
+        public Classes.PersonInfo Player = new Classes.PersonInfo("Student",100,10,1,0,0,5);
         public MainWindow()
         {
             InitializeComponent();
+            UserInfoPlayer();
+        }
+
+        public void UserInfoPlayer()
+        {
+            if (Player.Glasses > 100 * Player.Level)
+            {
+                Player.Level++;
+                Player.Glasses = 0;
+                Player.Health += 100;
+                Player.Damage++;
+                Player.Armor++;
+            }
+            playerHealth.Content = "Жизненные показтели: " + Player.Health;
+            playerArmor.Content = "Броня: " + Player.Armor;
+            playerLevel.Content = "Уровень: " + Player.Level;
+            playerGlasses.Content = "Опыт: " + Player.Glasses;
+            playerMoney.Content = "Монеты: " + Player.Money;
         }
     }
 }
