@@ -22,6 +22,7 @@ namespace pr3.Classes
         public int Money { get; set; }
         /// Урон
         public float Damage { get; set; }
+        //Путь к изображению
 
         public PersonInfo(string Name, int Health, int Armor, int Level, int Glasses, int Money, float Damage)
         {
